@@ -1,0 +1,149 @@
+---
+---
+
+<section>
+  <div class="section__reviews">
+    <h2 class="section__review-title">Conoce las Fibras</h2>
+    <span class="divisor"></span>
+
+    <div class="container__reviews">
+      <div class="review">
+        <h5 class="review__title">Fibra Uno</h5>
+        <p class="review__text">
+          Fibra Uno cotiza con la clave de pizarra FUNO11, sigue el precio,
+          dentro de pronto tendremos una sección con todos los datos relevantes
+          de esta Fibra.
+        </p>
+        <a
+          class="review__link"
+          href="https://www.google.com/finance/quote/FUNO11:BMV"
+          target="_blank">Ver más</a
+        >
+      </div>
+
+      <div class="review">
+        <h5 class="review__title">Fibra Monterrey</h5>
+        <p class="review__text">
+          Fibra Monterrey cotiza con la clave de pizarra FMTY14, sigue el
+          precio, dentro de pronto tendremos una sección con todos los datos
+          relevantes de esta Fibra.
+        </p>
+        <a
+          class="review__link"
+          href="https://www.google.com/finance/quote/FMTY14:BMV"
+          target="_blank">Ver más</a
+        >
+      </div>
+
+      <div class="review">
+        <h5 class="review__title">Fibra Danhos</h5>
+        <p class="review__text">
+          Fibra Danhos cotiza con la clave de pizarra DANHOS13, sigue el precio,
+          dentro de pronto tendremos una sección con todos los datos relevantes
+          de esta Fibra.
+        </p>
+        <a
+          class="review__link"
+          href="https://www.google.com/finance/quote/DANHOS13:BMV"
+          target="_blank">Ver más</a
+        >
+      </div>
+
+      <div class="review">
+        <h5 class="review__title">Fibra Nova</h5>
+        <p class="review__text">
+          Fibra Nova cotiza con la clave de pizarra FNOVA17, sigue el precio,
+          dentro de pronto tendremos una sección con todos los datos relevantes
+          de esta Fibra.
+        </p>
+        <a
+          class="review__link"
+          href="https://www.google.com/finance/quote/FNOVA17:BMV"
+          target="_blank">Ver más</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section Reviews */
+  .section__reviews {
+    width: 100%;
+    max-width: 120rem;
+    padding: 1rem 1rem;
+    margin: 0.5rem auto;
+  }
+
+  .section__review-title {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .container__reviews {
+    width: 100%;
+    max-width: 90rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  .review {
+    width: 100%;
+    max-width: 35rem;
+    padding: 1.2rem;
+  }
+  .review__title {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 1rem 0 0 0;
+  }
+
+  .review__text {
+    font-size: 1rem;
+    font-weight: lighter;
+    padding-bottom: 1rem;
+  }
+
+  .review__link {
+    display: inline-flex;
+    font-size: 1rem;
+    font-weight: lighter;
+    border: 2px solid #18a0fb;
+    color: #18a0fb;
+    background-color: transparent;
+    padding: 0.4rem 1.2rem;
+    border-radius: 0.5rem;
+
+    transition: all 0.2s ease;
+  }
+
+  .review__link:hover,
+  .review__link:active {
+    border: 2.6px solid #18a0fb;
+    color: #18a0fb;
+    background-color: #022238;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 15px 25px 0;
+    transform: translate(0.2rem, -0.2rem);
+  }
+
+  @media screen and (max-width: 780px) {
+    .section__reviews {
+      padding: 1rem 0;
+    }
+
+    .container__reviews {
+      gap: 1.2rem;
+    }
+
+    .review {
+      min-width: 100%;
+      padding: 0.6rem;
+    }
+  }
+</style>
