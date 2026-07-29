@@ -1,0 +1,70 @@
+---
+const { src, alt } = Astro.props;
+---
+
+<div class="member__img tooltip">
+  <h5 class="tiptext">{alt}</h5>
+  <img src={src} alt={alt} />
+</div>
+
+<style>
+  .member__img {
+    margin-right: -1.2rem;
+    cursor: pointer;
+  }
+
+  .member__img:last-child {
+    margin: 0;
+  }
+  img {
+    width: 4.2rem;
+    height: 4.2rem;
+    border-radius: 50%;
+    border: 3px solid var(--theme-background);
+
+    transition: all 0.2s ease-in;
+  }
+
+  img:hover {
+    transform: scale(1.2);
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tiptext {
+    visibility: hidden;
+    position: absolute;
+    top: -90%;
+    left: 40%;
+    min-width: max-content;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-align: center;
+    color: var(--theme-primary);
+    background-color: var(--theme-surface-1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.2rem;
+    z-index: 1;
+  }
+
+  .tooltip .tiptext::after {
+    /* content: " "; */
+    position: absolute;
+    border-width: 5px;
+    border-style: solid;
+  }
+  .tooltip:hover .tiptext {
+    visibility: visible;
+  }
+
+  @media screen and (max-width: 790px) {
+    img {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+  }
+</style>
