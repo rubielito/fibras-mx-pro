@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Page.astro";
+
+import Container from "../components/Container.astro";
+import Mensaje from "../components/mensaje.astro";
+
+import Banner from "../components/Banner.astro";
+import IframePriceTicker from "../components/IframePriceTicker.astro";
+import PreviewReviews from "../components/PreviewReviews.astro";
+import PreviewPosts from "../components/PreviewPosts.astro";
+import Community from "../components/Community.astro";
+
+const seo = {
+  title: "Fibras MX | De noob a Inversionista patrimonial",
+  description:
+    "La comunidad Fibras MX nacio como una iniciativa para hacer llegar la información referente a las fibras a más inversionistas que apenas comienzan a dar sus primeros pasos en el mundo de las inversiones y la bolsa, para que vean las bondades de este instrumento financiero y el comienzo sea menos doloroso y evitar posibles fraudes a los más novatos.",
+};
+---
+
+<Layout seo={seo}>
+  <Banner />
+
+  <!-- Iframe Price Ticker Amefibra -->
+  <IframePriceTicker />
+
+  <!-- Preview Reviews -->
+  <PreviewReviews />
+
+  <!-- Preview Posts -->
+  <PreviewPosts />
+
+  <!-- Community -->
+  <Community />
+</Layout>
