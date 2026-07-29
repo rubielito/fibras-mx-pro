@@ -1,201 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIBRAS.MX | Dashboard Pro</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>FIBRAS.MX | Fideicomisos de Inversión Inmobiliaria</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap');
-        
         body { font-family: 'Inter', sans-serif; background-color: #080808; color: #f2f2f2; }
         .bebas { font-family: 'Bebas Neue', sans-serif; }
-        .fibra-card:hover { transform: translateY(-3px); border-color: #444; transition: 0.2s; }
-        .bg-card { background: #101010; border: 1px solid #222; }
         .accent-red { color: #e8003a; }
-        .bg-accent-red { background: #e8003a; }
+        .bg-accent-red { background-color: #e8003a; }
+        .border-gray { border-color: #222; }
+        .bg-card { background-color: #101010; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
-        
-        .pulse-dot {
-            width: 7px; h-height: 7px; border-radius: 50%; background: #1D9E75;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.6; }
-            100% { transform: scale(1); opacity: 1; }
-        }
     </style>
 </head>
 <body class="antialiased">
-
-    <!-- Header similar al original -->
-    <header class="sticky top-0 z-30 border-b border-[#222] bg-[#080808]/95 backdrop-blur-md">
-        <div class="max-w-[1100px] mx-auto px-4">
-            <div class="flex items-center justify-between h-[56px]">
-                <div class="flex items-center gap-1.5 select-none">
-                    <div class="w-2 h-2 rounded-full bg-accent-red"></div>
-                    <span class="bebas text-2xl tracking-wider">FIBRAS<span class="accent-red">.MX</span></span>
-                </div>
-                
-                <div class="flex items-center gap-2 text-[11px] font-semibold text-[#888] bg-[#181818] border border-[#2e2e2e] px-3 py-1.5 rounded-full">
-                    <div class="pulse-dot"></div>
-                    <span class="hidden sm:inline">BMV · MÉXICO</span>
-                    <span>🇲🇽</span>
+    <header class="sticky top-0 z-30 border-b border-gray bg-[#080808]/97 backdrop-blur-md">
+        <div class="max-w-[1100px] mx-auto px-3">
+            <div class="flex items-center justify-between h-[52px]">
+                <a href="/" class="flex items-center gap-1.5 select-none no-underline">
+                    <div class="w-2 h-2 rounded-full bg-accent-red flex-shrink-0"></div>
+                    <span class="bebas text-[26px] tracking-[2px] text-[#f2f2f2]">FIBRAS<span class="accent-red">.MX</span></span>
+                </a>
+                <nav class="hidden md:flex items-center gap-1">
+                    <a href="#" class="px-3 py-1 text-xs font-semibold text-[#f2f2f2]">FIBRAs</a>
+                    <a href="#" class="px-3 py-1 text-xs font-semibold text-[#888]">Dashboard</a>
+                    <a href="#" class="px-3 py-1 text-xs font-semibold text-[#888]">Comparador</a>
+                    <a href="#" class="px-3 py-1 text-xs font-semibold text-[#888]">Calculadora</a>
+                    <a href="#" class="px-3 py-1 text-xs font-semibold text-[#888]">Portafolio</a>
+                </nav>
+                <div class="flex items-center gap-1 text-[10px] font-bold text-[#888] bg-[#1a1a1a] px-2 py-1 rounded border border-[#333]">
+                    <span>BMV · MÉXICO</span> 🇲🇽
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-[1100px] mx-auto px-4 py-6">
-        
-        <!-- Calculadora de Rentas (Mejora Pro) -->
-        <section class="mb-8 p-6 rounded-2xl bg-gradient-to-br from-[#1e1e1e] to-[#101010] border border-[#333]">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <h2 class="bebas text-3xl tracking-wide mb-1">Calculadora de Rentas</h2>
-                    <p class="text-sm text-[#888]">Simula tus ingresos mensuales basados en el Yield promedio.</p>
+    <main class="max-w-[1100px] mx-auto px-3 py-6">
+        <div class="mb-6 relative">
+            <input type="text" placeholder="Buscar FIBRA por nombre o ticker..." class="w-full bg-[#111] border border-[#222] rounded-lg py-3 px-4 text-sm focus:outline-none focus:border-[#444] transition-all">
+            <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[#444] text-xs font-bold">17</span>
+        </div>
+
+        <div class="flex gap-2 overflow-x-auto pb-4 scrollbar-hide mb-6" id="filters">
+            <button class="bg-accent-red text-white px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">Todas</button>
+            <button class="bg-[#111] border border-[#222] text-[#888] px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">Diversificado</button>
+            <button class="bg-[#111] border border-[#222] text-[#888] px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">Industrial</button>
+            <button class="bg-[#111] border border-[#222] text-[#888] px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">Comercial</button>
+            <button class="bg-[#111] border border-[#222] text-[#888] px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">Hotelero</button>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mb-8">
+            <div class="bg-card border border-gray rounded-xl p-4 flex items-center justify-between">
+                <span class="text-xs font-bold text-[#888] uppercase tracking-wider">Yield Prom.</span>
+                <span class="text-xl font-bold text-white">7.01%</span>
+            </div>
+            <div class="bg-card border border-gray rounded-xl p-4 flex items-center justify-between">
+                <span class="text-xs font-bold text-[#888] uppercase tracking-wider">SA-TAFE</span>
+                <span class="text-sm font-bold text-[#1D9E75]">13 MANTENER</span>
+            </div>
+        </div>
+
+        <h2 class="bebas text-2xl tracking-wider mb-4 px-1 uppercase">Mayores Dividendos <span class="text-xs text-[#555] ml-2 lowercase bebas tracking-normal">Top 8 anual</span></h2>
+        <div class="flex gap-3 overflow-x-auto pb-6 scrollbar-hide">
+            <div class="min-w-[140px] bg-card border border-gray rounded-xl p-4">
+                <p class="text-[10px] font-bold text-[#555] mb-1">FIBRAPL</p>
+                <p class="text-lg font-bold text-white">$77.00</p>
+                <p class="text-[9px] font-bold text-accent-red uppercase">Industrial</p>
+            </div>
+            <div class="min-w-[140px] bg-card border border-gray rounded-xl p-4">
+                <p class="text-[10px] font-bold text-[#555] mb-1">EDUCA</p>
+                <p class="text-lg font-bold text-white">$54.00</p>
+                <p class="text-[9px] font-bold text-accent-red uppercase">Educativo</p>
+            </div>
+            <div class="min-w-[140px] bg-card border border-gray rounded-xl p-4">
+                <p class="text-[10px] font-bold text-[#555] mb-1">FIBRAMQ</p>
+                <p class="text-lg font-bold text-white">$45.39</p>
+                <p class="text-[9px] font-bold text-accent-red uppercase">Industrial</p>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-6 px-1">
+            <h2 class="bebas text-2xl tracking-wider uppercase">Explorar FIBRAs</h2>
+            <div class="flex items-center gap-2">
+                <button class="bg-[#111] border border-[#222] text-[10px] font-bold px-3 py-1 rounded uppercase tracking-tighter">CSV</button>
+                <span class="text-[10px] font-bold text-[#555]">17 FIBRAs</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="fibra-grid">
+            <!-- FUNO -->
+            <div class="bg-card border border-gray rounded-2xl p-5 flex flex-col">
+                <div class="flex items-start justify-between mb-4">
+                    <img src="https://fibras-mx.abacusai.app/logos/funo.png" class="h-8 object-contain bg-white rounded p-1" alt="FUNO">
+                    <span class="text-2xl">🏢</span>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-                    <div class="relative flex-1">
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-[#888]">$</span>
-                        <input type="number" id="calcInput" placeholder="Monto a invertir..." 
-                               class="w-full bg-[#080808] border border-[#444] rounded-xl py-3 pl-8 pr-4 text-white focus:outline-none focus:border-accent-red transition-all">
+                <h3 class="bebas text-xl tracking-wide text-white">FUNO</h3>
+                <p class="text-[10px] font-bold text-[#555] uppercase mb-4 tracking-widest">Diversificado</p>
+                <div class="flex items-end justify-between mt-auto">
+                    <div>
+                        <p class="text-2xl font-bold text-white">$31.87</p>
+                        <p class="text-[10px] font-bold text-[#1D9E75]">+2.28%</p>
                     </div>
-                    <div class="flex gap-4">
-                        <div class="bg-[#181818] p-3 rounded-xl border border-[#2e2e2e] min-w-[120px]">
-                            <p class="text-[10px] text-[#888] font-bold uppercase">Mensual</p>
-                            <p class="text-lg font-bold text-[#1D9E75]" id="monthlyResult">$0.00</p>
-                        </div>
-                        <div class="bg-[#181818] p-3 rounded-xl border border-[#2e2e2e] min-w-[120px]">
-                            <p class="text-[10px] text-[#888] font-bold uppercase">Anual</p>
-                            <p class="text-lg font-bold text-[#1D9E75]" id="yearlyResult">$0.00</p>
-                        </div>
+                    <div class="text-right">
+                        <p class="text-[10px] font-bold text-[#888] uppercase tracking-tighter">Yield 7.88%</p>
+                        <p class="text-[10px] font-bold text-[#555]">Ocup. 95.4%</p>
                     </div>
                 </div>
+                <div class="mt-4 pt-4 border-t border-[#1a1a1a] flex justify-between items-center">
+                    <span class="text-[9px] font-black text-[#1D9E75] border border-[#1D9E75]/30 px-2 py-0.5 rounded">MANTENER</span>
+                    <span class="text-[10px] font-bold text-[#333] uppercase">Fibra Uno</span>
+                </div>
             </div>
-        </section>
-
-        <!-- Filtros -->
-        <div class="flex gap-2 overflow-auto py-2 scrollbar-hide mb-6" id="filterContainer">
-            <!-- Botones se generarán por JS -->
+            <!-- More cards would go here -->
         </div>
-
-        <!-- Métricas Rápidas -->
-        <div class="flex flex-wrap gap-3 mb-8">
-            <div class="flex items-center gap-2 bg-card px-4 py-2 rounded-lg">
-                <i class="fas fa-chart-pie accent-red text-sm"></i>
-                <span class="text-xs font-semibold text-[#888]">Yield Promedio: <span class="text-white" id="avgYieldText">--</span></span>
-            </div>
-            <div class="flex items-center gap-2 bg-card px-4 py-2 rounded-lg">
-                <i class="fas fa-check-circle text-[#1D9E75] text-sm"></i>
-                <span class="text-xs font-semibold text-[#888]">Acciones Recomendadas: <span class="text-white">COMPRAR / MANTENER</span></span>
-            </div>
-        </div>
-
-        <!-- Grid de FIBRAs -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4" id="fibrasGrid">
-            <!-- Cards se generarán por JS -->
-        </div>
-
     </main>
 
-    <footer class="border-t border-[#1a1a1a] py-10 text-center">
-        <p class="text-[#555] text-xs max-w-[600px] mx-auto leading-relaxed px-4">
-            Clon mejorado de FIBRAS.MX · Datos educativos · No es asesoría financiera.
-        </p>
-        <p class="text-[#333] text-[11px] mt-4 font-bold uppercase tracking-widest">
-            © 2026 FIBRAS.MX PRO · Rubielito Edition 🇲🇽
-        </p>
+    <footer class="mt-20 border-t border-[#111] py-12 text-center">
+        <p class="bebas text-lg tracking-[3px] text-[#222]">FIBRAS.MX</p>
+        <p class="text-[9px] font-bold text-[#333] uppercase mt-2 tracking-widest">© 2026 Clone · Educational Purposes Only</p>
     </footer>
-
-    <script>
-        // Datos extraídos del proyecto original
-        const FIBRAS_DATA = [
-            {ticker:"FUNO11", name:"FUNO", fullName:"Fibra Uno", sector:"Diversificado", color:"#e8003a", logo:"https://fibras-mx.abacusai.app/logos/funo.png", staticDiv:"$2.40", staticOcc:"95.4%", price: 31.87, saAction: "MANTENER", yield: 7.53},
-            {ticker:"FIBRAPL14", name:"Prologis", fullName:"Fibra Prologis", sector:"Industrial", color:"#0099ff", logo:"https://fibras-mx.abacusai.app/logos/fibrapl.png", staticDiv:"$4.07", staticOcc:"97.0%", price: 77.00, saAction: "MANTENER", yield: 5.28},
-            {ticker:"FIBRAMQ12", name:"Macquarie", fullName:"Fibra Macquarie", sector:"Industrial", color:"#ff6b00", logo:"https://fibras-mx.abacusai.app/logos/fibramq.png", staticDiv:"$2.45", staticOcc:"96.0%", price: 45.39, saAction: "MANTENER", yield: 5.40},
-            {ticker:"DANHOS13", name:"Danhos", fullName:"Fibra Danhos", sector:"Comercial", color:"#9b59b6", logo:"https://fibras-mx.abacusai.app/logos/danhos.png", staticDiv:"$1.80", staticOcc:"93.5%", price: 21.50, saAction: "MANTENER", yield: 8.37},
-            {ticker:"FSHOP13", name:"FShop", fullName:"Fibra Shop", sector:"Comercial", color:"#e67e22", logo:"https://fibras-mx.abacusai.app/logos/fshop.png", staticDiv:"$0.67", staticOcc:"92.0%", price: 6.80, saAction: "MANTENER", yield: 9.85},
-            {ticker:"FINN13", name:"FINN", fullName:"Fibra Inn", sector:"Hotelero", color:"#1abc9c", logo:"https://fibras-mx.abacusai.app/logos/finn.png", staticDiv:"$0.36", staticOcc:"68.0%", price: 5.12, saAction: "MANTENER", yield: 7.03},
-            {ticker:"FIHO12", name:"FibraHotel", fullName:"Fibra Hotel", sector:"Hotelero", color:"#00bcd4", logo:"https://fibras-mx.abacusai.app/logos/fiho.png", staticDiv:"$0.60", staticOcc:"60.1%", price: 7.28, saAction: "MANTENER", yield: 8.24},
-            {ticker:"FMTY14", name:"Fibra Mty", fullName:"Fibra Monterrey", sector:"Diversificado", color:"#f39c12", logo:"https://fibras-mx.abacusai.app/logos/fmty.png", staticDiv:"$0.49", staticOcc:"96.0%", price: 11.20, saAction: "MANTENER", yield: 4.37},
-            {ticker:"FNOVA17", name:"FNova", fullName:"Fibra Nova", sector:"Industrial", color:"#4caf50", logo:"https://fibras-mx.abacusai.app/logos/fnova.png", staticDiv:"$2.36", staticOcc:"95.0%", price: 43.79, saAction: "MANTENER", yield: 5.39},
-            {ticker:"FHIPO14", name:"FHipo", fullName:"FHipo Hipotecaria", sector:"Hipotecario", color:"#795548", logo:"https://fibras-mx.abacusai.app/logos/fhipo.png", staticDiv:"$1.42", staticOcc:"—", price: 14.15, saAction: "MANTENER", yield: 10.03},
-            {ticker:"EDUCA18", name:"Educa", fullName:"Fibra Educa", sector:"Educativo", color:"#3f51b5", logo:"https://fibras-mx.abacusai.app/logos/educa.png", staticDiv:"$2.56", staticOcc:"98.0%", price: 54.00, saAction: "MANTENER", yield: 4.74},
-            {ticker:"STORAGE18", name:"Storage", fullName:"Fibra Storage", sector:"Almacenaje", color:"#ff9800", logo:"https://fibras-mx.abacusai.app/logos/storage.png", staticDiv:"$2.42", staticOcc:"83.5%", price: 24.00, saAction: "MANTENER", yield: 10.08},
-            {ticker:"FCFE18", name:"Fibra CFE", fullName:"Fibra CFE", sector:"Energía", color:"#00897b", logo:"https://fibras-mx.abacusai.app/logos/fcfe.png", staticDiv:"$2.10", staticOcc:"—", price: 24.79, saAction: "MANTENER", yield: 8.47},
-            {ticker:"TERRA13", name:"Terrafina", fullName:"Terrafina", sector:"Industrial", color:"#8d6e63", logo:"https://fibras-mx.abacusai.app/logos/terra.png", staticDiv:"$1.20", staticOcc:"95.8%", price: 38.50, saAction: "MANTENER", yield: 3.12}
-        ];
-
-        const sectors = ["Todas", ...new Set(FIBRAs_DATA.map(f => f.sector))];
-        let currentSector = "Todas";
-
-        // Renderizar Filtros
-        const filterContainer = document.getElementById('filterContainer');
-        sectors.forEach(sector => {
-            const btn = document.createElement('button');
-            btn.className = `px-4 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all border ${sector === currentSector ? 'bg-accent-red border-accent-red text-white' : 'bg-[#181818] border-[#2e2e2e] text-[#888] hover:border-[#444]'}`;
-            btn.innerText = sector;
-            btn.onclick = () => {
-                currentSector = sector;
-                renderFibras();
-                updateFilters();
-            };
-            filterContainer.appendChild(btn);
-        });
-
-        function updateFilters() {
-            Array.from(filterContainer.children).forEach(btn => {
-                if (btn.innerText === currentSector) {
-                    btn.classList.add('bg-accent-red', 'border-accent-red', 'text-white');
-                    btn.classList.remove('bg-[#181818]', 'border-[#2e2e2e]', 'text-[#888]');
-                } else {
-                    btn.classList.remove('bg-accent-red', 'border-accent-red', 'text-white');
-                    btn.classList.add('bg-[#181818]', 'border-[#2e2e2e]', 'text-[#888]');
-                }
-            });
-        }
-
-        // Renderizar Grid
-        function renderFibras() {
-            const grid = document.getElementById('fibrasGrid');
-            grid.innerHTML = '';
-            
-            const filtered = FIBRAs_DATA.filter(f => currentSector === "Todas" || f.sector === currentSector);
-            
-            filtered.forEach(f => {
-                const card = document.createElement('div');
-                card.className = 'bg-card rounded-xl p-4 fibra-card flex flex-col items-center text-center';
-                card.innerHTML = `
-                    <div class="w-10 h-10 mb-3 bg-white/10 rounded-lg p-1.5 flex items-center justify-center overflow-hidden">
-                        <img src="${f.logo}" alt="${f.name}" class="object-contain max-h-full">
-                    </div>
-                    <p class="bebas text-lg tracking-wider text-white">${f.name}</p>
-                    <p class="text-[9px] font-bold text-[#888] uppercase mb-2">${f.sector}</p>
-                    <p class="text-sm font-bold text-[#1D9E75]">$${f.price.toFixed(2)}</p>
-                    <p class="text-[10px] text-white/40 mt-1">Yield ${f.yield}%</p>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Calculadora
-        const YIELD_AVG = 0.0701;
-        document.getElementById('calcInput').addEventListener('input', (e) => {
-            const amount = parseFloat(e.target.value) || 0;
-            const yearly = amount * YIELD_AVG;
-            const monthly = yearly / 12;
-            
-            document.getElementById('yearlyResult').innerText = '$' + yearly.toLocaleString('es-MX', {minimumFractionDigits: 2});
-            document.getElementById('monthlyResult').innerText = '$' + monthly.toLocaleString('es-MX', {minimumFractionDigits: 2});
-        });
-
-        // Init
-        document.getElementById('avgYieldText').innerText = (YIELD_AVG * 100).toFixed(2) + '%';
-        renderFibras();
-
-    </script>
 </body>
 </html>
