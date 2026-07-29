@@ -1,0 +1,32 @@
+---
+import CommunityMember from "./CommunityMember.astro";
+
+import { members } from "../utils/members";
+import userPreviewImage from './CommunityImagePreview.astro'
+---
+
+<div class="container__community-images">
+  <div class="images">
+    {
+      members.map((member) => (
+        <CommunityMember src={member.src || userPreviewImage} alt={member.alt} />
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .container__community-images {
+    display: flex;
+    justify-content: center;
+    min-width: 80%;
+    padding: 1rem 0;
+    margin: 1rem auto;
+  }
+
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+  }
+</style>
