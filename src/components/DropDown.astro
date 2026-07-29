@@ -1,0 +1,70 @@
+---
+---
+
+<ul class="dropdown__menu">
+  <li><a href="/">Inicio</a></li>
+  <li><a href="/las-fibras">Las Fibras</a></li>
+  <li><a href="/comunidad">Comunidad</a></li>
+  <li><a href="/blog">Blog</a></li>
+</ul>
+
+<style>
+  .dropdown__menu {
+    position: absolute;
+    top: 3rem;
+    right: 1.2rem;
+    width: 300px;
+    background-color: var(--theme-background-blur);
+    -webkit-backdrop-filter: blur(45px);
+    backdrop-filter: blur(45px);
+    border-radius: 10px;
+    overflow: hidden;
+    color: var(--theme-primary);
+    height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    display: none;
+    transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    z-index: 9999;
+  }
+
+  .dropdown__menu.open {
+    height: 260px;
+    box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  li {
+    padding: 0.7rem;
+    color: inherit;
+  }
+
+  a {
+    text-decoration: underline transparent;
+    color: inherit;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 580px) {
+    .dropdown__menu {
+      display: flex;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .dropdown__menu {
+      right: 0.5rem;
+      left: 0.5rem;
+      width: unset;
+    }
+  }
+</style>
