@@ -1,0 +1,77 @@
+---
+import BlogPostsList from "../components/BlogPostsList.astro";
+
+const postsSort = (await Astro.glob("../pages/blog/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishedAt).valueOf() -
+    new Date(a.frontmatter.publishedAt).valueOf()
+);
+
+const posts = postsSort.slice(0, 2);
+---
+
+<section>
+  <div class="section__posts">
+    <h2 class="section__post-title">Posts</h2>
+    <span class="divisor"></span>
+
+    <div class="container__posts">
+      <BlogPostsList posts={posts} />
+    </div>
+    <center>
+      <p>
+        Encuentra noticias y post dedicados exclusivamente a las Fibras.
+        <a class="link__blog" href="/blog">Ir al blog</a>
+      </p>
+    </center>
+  </div>
+</section>
+
+<style>
+  /* Section Posts */
+
+  .section__posts {
+    width: 100%;
+    max-width: 120rem;
+    padding: 1rem 1rem;
+    margin: 0.5rem auto;
+  }
+
+  .section__post-title {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .container__posts {
+    width: 100%;
+    max-width: 90rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  center p {
+    padding: 0 0.6rem 0 0.6rem;
+  }
+
+  .link__blog {
+    display: inline-flex;
+    color: #18a0fb;
+    text-decoration: underline transparent;
+
+    transition: all 0.2s ease;
+  }
+
+  .link__blog:hover,
+  .link__blog:active {
+    text-decoration: underline #18a0fb;
+  }
+
+  @media screen and (max-width: 780px) {
+    .section__posts {
+      padding: 1rem 0;
+    }
+  }
+</style>
