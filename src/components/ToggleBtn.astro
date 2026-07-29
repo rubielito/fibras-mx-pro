@@ -1,0 +1,28 @@
+---
+---
+
+<div class="toggle__btn">
+  <i class="fa-solid fa-bars"></i>
+</div>
+
+<style>
+  .toggle__btn {
+    margin-left: 2rem;
+    color: var(--theme-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    transition: scale 0.3s ease-in;
+  }
+
+  .toggle__btn:hover,
+  .toggle__btn:focus {
+    transform: scale(1.1);
+  }
+
+  @media screen and (max-width: 580px) {
+    .toggle__btn {
+      display: block;
+    }
+  }
+</style>
