@@ -1,0 +1,27 @@
+{
+  "name": "fibras",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^0.17.2",
+    "@astrojs/svelte": "^2.0.2",
+    "@types/bootstrap": "^5.2.6",
+    "astro": "^2.0.15",
+    "astro-bootstrap": "^0.5.11",
+    "bootstrap": "^5.2.3",
+    "lit": "^2.6.1",
+    "svelte": "^3.55.1",
+    "swiper": "^9.1.0"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^1.1.0",
+    "astro-icon": "^0.8.0"
+  }
+}
