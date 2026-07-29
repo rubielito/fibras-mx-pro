@@ -1,0 +1,95 @@
+---
+import Container from "./Container.astro";
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
+import DropDown from "./DropDown.astro";
+import ToggleBtn from "./ToggleBtn.astro";
+---
+
+<script>
+  import "./ThemeToggleButton/theme-toggle-button";
+</script>
+
+<header>
+  <Container>
+    <nav class="navbar">
+      <a href="/" title="Navigate Home">
+        <Logo />
+      </a>
+      <!-- Nav -->
+      <Nav />
+
+      <div class="theme-toggle__container">
+        <!-- This component uses client script -->
+        <theme-toggle-button></theme-toggle-button>
+      </div>
+    </nav>
+    <nav class="dropdown">
+      <a class="dropdown__logo" href="/" title="Navigate Home">
+        <Logo />
+      </a>
+
+      <DropDown />
+
+      <div class="theme-toggle__container">
+        <!-- This component uses client script -->
+        <theme-toggle-button></theme-toggle-button>
+        <ToggleBtn />
+      </div>
+    </nav>
+  </Container>
+</header>
+
+<style>
+  header {
+    height: var(--theme-header-height, 64px);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--theme-primary-light);
+  }
+
+  /* Nav */
+  .navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header__logo {
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+  .theme-toggle__container {
+    margin-left: 1rem;
+    position: relative;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* DropDown */
+  .dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    display: none;
+  }
+
+  .dropdown__logo {
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 580px) {
+    .navbar {
+      display: none;
+    }
+
+    .dropdown {
+      display: flex;
+    }
+  }
+</style>
