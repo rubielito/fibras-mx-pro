@@ -1,0 +1,42 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import type { Props as BaseHeadProps } from "../components/BaseHead.astro";
+import ThemeProvider from "../components/ThemeToggleButton/ThemeProvider.astro";
+
+export interface Props {
+  seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead {...seo} />
+    <ThemeProvider />
+    <!-- dropdown menu js -->
+  </head>
+  <body>
+    <slot name="header" />
+    <main class="flow">
+      <slot />
+    </main>
+    <slot name="footer" />
+
+    <!-- script dropdown menu - responsive -->
+    <script>
+      const toggleBtn = document.querySelector(".toggle__btn");
+      const toggleBtnIcon = document.querySelector(".toggle__btn i");
+      const dropDownMenu = document.querySelector(".dropdown__menu");
+
+      toggleBtn.addEventListener("click", () => {
+        dropDownMenu.classList.toggle("open");
+        const isOpen = dropDownMenu.classList.contains("open");
+
+        toggleBtnIcon.classList = isOpen
+          ? "fa-solid fa-xmark"
+          : "fa-solid fa-bars";
+      });
+    </script>
+  </body>
+</html>
