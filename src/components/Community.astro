@@ -1,0 +1,116 @@
+---
+import CommunityImages from "../components/CommunityImages.astro";
+---
+
+<section>
+  <div class="section__community">
+    <h2 class="section__community-title">¿Quiénes somos?</h2>
+    <span class="divisor"></span>
+
+    <div class="container__community">
+      <p>
+        Fibras MX es la comunidad en donde se comparte la información más
+        relevante sobre las Fibras que cotizan en la Bolsa Mexicana de Valores.
+      </p>
+      <!-- <CommunityImages /> -->
+    </div>
+    <div class="signup">
+      <div class="signup__container">
+        <div>
+          <p id="signup__text">Únete a la comunidad Fibras MX.</p>
+        </div>
+        <div>
+          <a
+            target="_blank"
+            class="signup__btn"
+            href="https://web.facebook.com/groups/fibras.mx/">Unirme</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Section Community */
+
+  .section__community {
+    width: 100%;
+    max-width: 120rem;
+    padding: 1rem 1rem;
+    margin: 0.5rem auto;
+
+    overflow: hidden;
+  }
+
+  .section__community-title {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .container__community {
+    width: 100%;
+    max-width: 90rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  .signup {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 6rem 2rem;
+
+    border-radius: .5rem;
+  }
+
+  .signup__container {
+    width: 90%;
+    max-width: 60rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+  }
+
+  #signup__text {
+    margin: 0;
+    margin-bottom: 0;
+    color: #0d0d0d;
+  }
+
+  .signup__btn {
+    display: inline-flex;
+    font-size: var(--step-0);
+    font-weight: lighter;
+    background-color: #18a0fb;
+    color: #fff;
+    padding: 0.4rem 1.6rem;
+    border-radius: 0.5rem;
+
+    transition: all 0.2s ease;
+  }
+
+  .signup__btn:hover,
+  .signup__btn:active {
+    color: #18a0fb;
+    background-color: #022238;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 15px 25px 0;
+    transform: translate(0.2rem, -0.1rem);
+  }
+
+  @media screen and (max-width: 890px) {
+    .signup {
+      padding: 4rem 1rem;
+    }
+    .signup__container {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+</style>
