@@ -1,0 +1,41 @@
+---
+import NavLink from "./NavLink.astro";
+
+const listLinks = [
+  { text: "Inicio", path: "/" },
+  { text: "Las Fibras", path: "/las-fibras" },
+  { text: "Comunidad", path: "/comunidad" },
+  { text: "Blog", path: "/blog" },
+];
+---
+
+<ul class="menu">
+  {
+    listLinks.map((link) => (
+      <li>
+        <NavLink class="menu__link" href={link.path}>
+          {link.text}
+        </NavLink>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu__link {
+    text-decoration: underline transparent;
+  }
+
+  .menu__link:hover {
+    text-decoration: underline;
+  }
+</style>
